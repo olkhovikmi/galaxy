@@ -1,0 +1,25 @@
+h1 {
+  color: blue;
+  vertical-align: middle;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+span {
+  font-size: 20px;
+}
+
+div {
+  font-size: 21px;
+}
+
+@media (max-width: 767px) {
+  span {
+    font-size: 14px;
+  }
+
+  div {
+    font-size: 17px;
+  }
+}
