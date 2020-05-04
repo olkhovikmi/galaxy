@@ -13,14 +13,14 @@ let path = {
 		html: [source_folder + '/*.html', '!' + source_folder + '/_*.html'],
 		css: source_folder + '/scss/style.scss',
 		js: source_folder + '/js/script.js',
-		img: source_folder + '/img/**/*.{jpg,png,svg,gif,ico,webp}',
-		fonts: source_folder + '/fonts/*.{ttf,woff,woff2}'
+		img: source_folder + '/img/**/*.{jpg,jpeg,png,svg,gif,ico,webp}',
+		fonts: source_folder + '/fonts/*.ttf'
 	}, // пути вывода
 	watch: {
 		html: source_folder + '/**/*.html',
 		css: source_folder + '/scss/**/*.scss',
 		js: source_folder + '/js/**/*.js',
-		img: source_folder + '/img/**/*.{jpg,png,svg,gif,ico,webp}'
+		img: source_folder + '/img/**/*.{jpg,jpeg,png,svg,gif,ico,webp}'
 	},
 	clean: './' + project_folder + '/'
 };
@@ -34,7 +34,15 @@ let { src, dest } = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
 	group_media = require('gulp-group-css-media-queries'),
 	clean_css = require('gulp-clean-css'),
-	rename = require('gulp-rename');
+	rename = require('gulp-rename'),
+	uglify = require('gulp-uglify-es').default,
+	imagemin = require('gulp-imagemin'),
+	webp = require('gulp-webp'),
+	webphtml = require('gulp-webp-html'),
+	webpcss = require('gulp-webpcss'),
+	svgSprite = require('gulp-svg-sprite'),
+	ttf2woff = require('gulp-ttf2woff'),
+	ttf2woff2 = require('gulp-ttf2woff2');
 
 function browserSync() {
 	browsersync.init({
@@ -49,47 +57,113 @@ function browserSync() {
 function html() {
 	return src(path.src.html)
 		.pipe(fileinclude())
+		.pipe(webphtml())
 		.pipe(dest(path.build.html))
 		.pipe(browsersync.stream());
 } //работа с html файлами
 
 function css() {
-	return src(path.src.css)
-		.pipe(
-			scss({
-				outputStyle: 'expanded' // scss формируетя не сжатым
-			})
-		)
-		.pipe(group_media())
-		.pipe(
-			autoprefixer({
-				overrideBrowserslist: ['last 5 versions'],
-				cascade: true
-			})
-		) // настройка аутопрефикса для css
-		.pipe(dest(path.build.css)) // выгружаем файл css
-		.pipe(clean_css()) //сжимаем css файл
+	return (
+		src(path.src.css)
+			.pipe(
+				scss({
+					outputStyle: 'expanded' // scss формируетя не сжатым
+				})
+			)
+			.pipe(group_media())
+			.pipe(
+				autoprefixer({
+					overrideBrowserslist: ['last 5 versions'],
+					cascade: true
+				})
+			) // настройка аутопрефикса для css
+			//.pipe(webpcss()) // добавляет доболнительный класс с картинокой в формате webp
+			.pipe(dest(path.build.css)) // выгружаем файл css
+			.pipe(clean_css()) //сжимаем css файл
+			.pipe(
+				rename({
+					extname: '.min.css'
+				})
+			) //  создаем сжатый файл css
+			.pipe(dest(path.build.css))
+			.pipe(browsersync.stream())
+	);
+} //работа с css файлами
+
+function js() {
+	return src(path.src.js)
+		.pipe(fileinclude())
+		.pipe(dest(path.build.js))
+		.pipe(uglify())
 		.pipe(
 			rename({
-				extname: '.min.css'
+				extname: '.min.js'
 			})
-		) //  создаем сжатый файл css
-		.pipe(dest(path.build.css))
+		)
+		.pipe(dest(path.build.js)) // создает файл
 		.pipe(browsersync.stream());
-} //работа с css файлами
+} //работа с js файлами
+
+function images() {
+	return src(path.src.img)
+		.pipe(
+			webp({
+				quality: 70
+			})
+		)
+		.pipe(dest(path.build.img))
+		.pipe(src(path.src.img))
+		.pipe(
+			imagemin({
+				progressive: true,
+				svgoPlugins: [{ removeViewBox: false }],
+				interlaced: true,
+				optimizationLevel: 3 // 0 to 7
+			})
+		)
+		.pipe(dest(path.build.img))
+		.pipe(browsersync.stream());
+} //работа с img файлами
+
+function fonts() {
+	src(path.src.fonts)
+		.pipe(ttf2woff())
+		.pipe(dest(path.build.fonts));
+	return src(path.src.fonts)
+		.pipe(ttf2woff2())
+		.pipe(dest(path.build.fonts));
+};
+/* gulp.task('svgSprite', function () {
+	return gulp.src([source_folder + '/iconsprite/*.svg']);
+		.pipe(svgSprite({
+				mode: {
+					stack: {
+						sprite: '../icons/icons.svg'
+					}
+				}
+			})
+		)
+		.pipe(dest(path.build.img)) // работа со спрайтами
+}) */
+
 
 function watchFiles() {
 	gulp.watch([path.watch.html], html);
 	gulp.watch([path.watch.css], css);
+	gulp.watch([path.watch.js], js);
+	gulp.watch([path.watch.img], images);
 } //обновляет код html
 
 function clear() {
 	return del(path.clean);
 } //удаляет папку dist
 
-let build = gulp.series(clear, gulp.parallel(css, html));
+let build = gulp.series(clear, gulp.parallel(js, css, html, images));
 let watch = gulp.parallel(build, watchFiles, browserSync); //вызывает функции
 
+exports.fonts = fonts;
+exports.images = images;
+exports.js = js;
 exports.css = css;
 exports.html = html;
 exports.build = build;

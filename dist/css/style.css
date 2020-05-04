@@ -14,6 +14,10 @@ div {
   font-size: 21px;
 }
 
+div {
+  background-image: url("../img/Layer_5.jpg");
+}
+
 @media (max-width: 767px) {
   span {
     font-size: 14px;
