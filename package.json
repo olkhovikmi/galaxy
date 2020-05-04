@@ -1,0 +1,22 @@
+{
+  "name": "galaxy",
+  "version": "1.0.0",
+  "description": "First gulp",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olkhovikmi/galaxy.git"
+  },
+  "author": "olkhovikmi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olkhovikmi/galaxy/issues"
+  },
+  "homepage": "https://github.com/olkhovikmi/galaxy#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  } 
+}
