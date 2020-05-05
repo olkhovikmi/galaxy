@@ -1,6 +1,7 @@
 let project_folder = 'dist'; // эту папку надо выгружать на сервер и передавать заказчику
 let source_folder = '#src'; // папка с исходниками
 
+
 let path = {
 	build: {
 		html: project_folder + '/',
@@ -14,7 +15,7 @@ let path = {
 		css: source_folder + '/scss/style.scss',
 		js: source_folder + '/js/script.js',
 		img: source_folder + '/img/**/*.{jpg,jpeg,png,svg,gif,ico,webp}',
-		fonts: source_folder + '/fonts/*.ttf'
+		fonts: source_folder + '/fonts/*.{ttf,woff,woff2}'
 	}, // пути вывода
 	watch: {
 		html: source_folder + '/**/*.html',
@@ -39,8 +40,6 @@ let { src, dest } = require('gulp'),
 	imagemin = require('gulp-imagemin'),
 	webp = require('gulp-webp'),
 	webphtml = require('gulp-webp-html'),
-	webpcss = require('gulp-webpcss'),
-	svgSprite = require('gulp-svg-sprite'),
 	ttf2woff = require('gulp-ttf2woff'),
 	ttf2woff2 = require('gulp-ttf2woff2');
 
@@ -63,31 +62,29 @@ function html() {
 } //работа с html файлами
 
 function css() {
-	return (
-		src(path.src.css)
-			.pipe(
-				scss({
-					outputStyle: 'expanded' // scss формируетя не сжатым
-				})
-			)
-			.pipe(group_media())
-			.pipe(
-				autoprefixer({
-					overrideBrowserslist: ['last 5 versions'],
-					cascade: true
-				})
-			) // настройка аутопрефикса для css
-			//.pipe(webpcss()) // добавляет доболнительный класс с картинокой в формате webp
-			.pipe(dest(path.build.css)) // выгружаем файл css
-			.pipe(clean_css()) //сжимаем css файл
-			.pipe(
-				rename({
-					extname: '.min.css'
-				})
-			) //  создаем сжатый файл css
-			.pipe(dest(path.build.css))
-			.pipe(browsersync.stream())
-	);
+	return src(path.src.css)
+		.pipe(
+			scss({
+				outputStyle: 'expanded' // scss формируетя не сжатым
+			})
+		)
+		.pipe(group_media())
+		.pipe(
+			autoprefixer({
+				overrideBrowserslist: ['last 5 versions'],
+				cascade: true
+			})
+		) // настройка аутопрефикса для css
+
+		.pipe(dest(path.build.css)) // выгружаем файл css
+		.pipe(clean_css()) //сжимаем css файл
+		.pipe(
+			rename({
+				extname: '.min.css'
+			})
+		) //  создаем сжатый файл css
+		.pipe(dest(path.build.css))
+		.pipe(browsersync.stream());
 } //работа с css файлами
 
 function js() {
@@ -126,26 +123,9 @@ function images() {
 } //работа с img файлами
 
 function fonts() {
-	src(path.src.fonts)
-		.pipe(ttf2woff())
-		.pipe(dest(path.build.fonts));
-	return src(path.src.fonts)
-		.pipe(ttf2woff2())
-		.pipe(dest(path.build.fonts));
-};
-/* gulp.task('svgSprite', function () {
-	return gulp.src([source_folder + '/iconsprite/*.svg']);
-		.pipe(svgSprite({
-				mode: {
-					stack: {
-						sprite: '../icons/icons.svg'
-					}
-				}
-			})
-		)
-		.pipe(dest(path.build.img)) // работа со спрайтами
-}) */
-
+	src(path.src.fonts).pipe(ttf2woff()).pipe(dest(path.build.fonts));
+	return src(path.src.fonts).pipe(ttf2woff2()).pipe(dest(path.build.fonts));
+}
 
 function watchFiles() {
 	gulp.watch([path.watch.html], html);
@@ -158,7 +138,7 @@ function clear() {
 	return del(path.clean);
 } //удаляет папку dist
 
-let build = gulp.series(clear, gulp.parallel(js, css, html, images));
+let build = gulp.series(clear, gulp.parallel(js, css, html, images, fonts));
 let watch = gulp.parallel(build, watchFiles, browserSync); //вызывает функции
 
 exports.fonts = fonts;
@@ -169,3 +149,4 @@ exports.html = html;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;
+
