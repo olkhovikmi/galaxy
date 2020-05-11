@@ -1,27 +1,38 @@
-h1 {
-	color: blue;
-	vertical-align: middle;
-	display: flex;
+@import 'fonts';
+
+@import 'adaptiveFonts';
+
+$grey: #3f444e;
+
+@mixin karla {
+	font-family: "Karl";	
+	font-weight: 700;	
 }
 
-span {
-	font-size: 20px;
-
-	@media (max-width: 767px) {
-		font-size: 14px;
-	}
+@mixin karlareg {
+	font-family: "Karl";	
+	font-weight: 400;	
 }
 
-div {
-	font-size: 21px;
+* {
+	margin: 0;
+	padding: 0;
 
-	@media (max-width: 767px) {
-		font-size: 17px;
-	}
+	list-style: none;
+	text-decoration: none;
+	box-sizing: border-box;
 }
 
-div {
-	background-image: url('../img/Layer_5.jpg');
+img {
+	max-width: 100%;
 }
 
-@media 'fonts';
+.wrap {
+	max-width: 1155px;
+	margin: 0 auto;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+@import 'header';
+@import 'mainTop';

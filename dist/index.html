@@ -1,1 +1,86 @@
-<!DOCTYPE html><html lang="ru"><head>	<meta charset="UTF-8">	<meta name="viewport" content="width=device-width, initial-scale=1.0">	<link rel="stylesheet" href="css/style.min.css">	<title>Gulp</title></head><body>	<header class="header"><h1>Шапка сайта</h1></header>	<main class="main">		<picture><source srcset="img/Layer_5.webp" type="image/webp"><img src="img/Layer_5.jpg" alt="Картинка"></picture>	</main>	<script src="js/script.min.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.min.css">
+	<link rel="stylesheet" href="css/nolmalize.min.css">
+
+	<title>MovieStore</title>
+</head>
+
+<body>
+	<header class="header">
+		<div class="wrap">
+			<div class="header-container">
+				<div class="logo">
+					<a href="#" class="logo_link"><span class="logo__text">m<i class="logo__img"><img src="img/logoPlay.svg"
+									alt="логотип"></i>vie store</span></a>
+				</div>
+
+				<nav class="header-menu">
+					<a href="#" class="header-menu__link"><img src="img/01_1.svg" alt="комментарии"></a>
+					<a href="#" class="header-menu__link"><img src="img/01_2.svg" alt="видео"></a>
+					<a href="#" class="header-menu__link"><img src="img/01_3.svg" alt="плей"></a>
+					<a href="#" class="header-menu__link"><img src="img/01_4.svg" alt="джостик"></a>
+					<a href="#" class="header-menu__link"><img src="img/01_5.svg" alt="смотреть"></a>
+					<a href="#" class="header-menu__link"><img src="img/01_6.svg" alt="репост"></a>
+				</nav>
+
+				<div class="profile">
+					<div class="profile__avatar"><a href="#"><img src="img/header_avatar.png" alt="аватар"></a></div>
+					<div class="profile__name"><a href="#">Carol Danvers</a></div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main class="main">
+		<div class="main-container">
+			<div class="wrap">
+				<div class="actors-box">
+					<section class="actors-list">
+						<div class="actors-item"></div>
+						<div class="actors-item actors-item__active"><img src="img/main_avatar.png" alt="Актер"><span
+								class="actors-item__name">James Gunn</span></div>
+						<div class="actors-item"></div>
+						<div class="actors-item"></div>
+					</section>
+					<div class="watch">
+						<a href="#" class="watch__link">Watch now</a>
+					</div>
+
+					<div class="box-info">
+						<section class="info-left">
+							<div class="published">
+								<span><b>Published</b>Feb 20, 2014</span>
+							</div>
+							<div class="update"><span><b>Updated</b>Feb 20, 2014</span></div>
+							<div class="rating"><span><b>Rating</b></span>
+								<div class="rating__group">
+									<input class="rating__star" type="radio" name="health" value="1" aria-label="Ужасно" checked>
+									<input class="rating__star" type="radio" name="health" value="2" aria-label="Сносно" checked>
+									<input class="rating__star" type="radio" name="health" value="3" aria-label="Нормально" checked>
+									<input class="rating__star" type="radio" name="health" value="4" aria-label="Хорошо" checked>
+									<input class="rating__star" type="radio" name="health" value="5" aria-label="Отлично">
+								</div>
+							</div>
+						</section>
+
+						<section class="info-right">
+							<div class="like"><span class="like__text">2,548</span></div>
+							<div class="comments"><span class="comments__text">21</span></div>
+							<div class="download"><span class="download__text">564</span></div>
+						</section>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</main>
+	<script src="js/script.min.js"></script>
+</body>
+
+</html>

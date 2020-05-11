@@ -1,7 +1,6 @@
 let project_folder = 'dist'; // эту папку надо выгружать на сервер и передавать заказчику
 let source_folder = '#src'; // папка с исходниками
 
-
 let path = {
 	build: {
 		html: project_folder + '/',
@@ -12,7 +11,7 @@ let path = {
 	}, // пути вывода
 	src: {
 		html: [source_folder + '/*.html', '!' + source_folder + '/_*.html'],
-		css: source_folder + '/scss/style.scss',
+		css: [source_folder + '/scss/style.scss', source_folder + '/scss/normalize.scss'],
 		js: source_folder + '/js/script.js',
 		img: source_folder + '/img/**/*.{jpg,jpeg,png,svg,gif,ico,webp}',
 		fonts: source_folder + '/fonts/*.{ttf,woff,woff2}'
@@ -38,8 +37,8 @@ let { src, dest } = require('gulp'),
 	rename = require('gulp-rename'),
 	uglify = require('gulp-uglify-es').default,
 	imagemin = require('gulp-imagemin'),
-	webp = require('gulp-webp'),
-	webphtml = require('gulp-webp-html'),
+	//webp = require('gulp-webp'),
+	//webphtml = require('gulp-webp-html'),
 	ttf2woff = require('gulp-ttf2woff'),
 	ttf2woff2 = require('gulp-ttf2woff2');
 
@@ -48,7 +47,7 @@ function browserSync() {
 		server: {
 			baseDir: './' + project_folder + '/'
 		},
-		port: 3000,
+		port: 1132,
 		notify: false
 	});
 }
@@ -56,7 +55,7 @@ function browserSync() {
 function html() {
 	return src(path.src.html)
 		.pipe(fileinclude())
-		.pipe(webphtml())
+		//.pipe(webphtml())
 		.pipe(dest(path.build.html))
 		.pipe(browsersync.stream());
 } //работа с html файлами
@@ -103,11 +102,11 @@ function js() {
 
 function images() {
 	return src(path.src.img)
-		.pipe(
+/* 		.pipe(
 			webp({
 				quality: 70
 			})
-		)
+		) */
 		.pipe(dest(path.build.img))
 		.pipe(src(path.src.img))
 		.pipe(
@@ -149,4 +148,3 @@ exports.html = html;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;
-
