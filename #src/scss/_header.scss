@@ -55,6 +55,7 @@
 			font-size: 15px;
 		}
 	}
+
 	&__name:after {
 		position: absolute;
 		top: 0;
@@ -63,7 +64,41 @@
 		width: 12px;
 		height: 17px;
 		content: "";
-		
+
 		background-image: url("../img/edit_profile.svg");
 	}
+}
+
+.header-menu__link-active {
+	position: relative;
+}
+
+.menu-text {
+	position: absolute;
+	bottom: -65px;
+	left: -21px;
+	padding: 10px;
+
+	@include karla;
+	color: #fff;
+	font-size: 13px;
+	text-transform: uppercase;
+
+	background-color: #d8232a;
+
+	border-radius: 10px;
+
+	z-index: 20;
+}
+
+.menu-text::after {
+	position: absolute;
+	top: -6px;
+	left: 25px;
+	display: block;
+	content: '';
+
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 10px solid #d8232a;
 }

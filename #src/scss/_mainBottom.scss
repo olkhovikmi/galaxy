@@ -1,0 +1,80 @@
+.film-container {
+	background-color: #edeff0;
+}
+
+.wrap {}
+
+.film-box {}
+
+.film-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 33px 0;
+}
+
+.movie-title {
+	@include karla;
+	color: $grey;
+	font-size: 17px;
+	text-transform: uppercase;
+}
+
+.realised {
+	@include karlareg;
+	color: $grey;
+	font-size: 18px;
+	font-style: italic;
+}
+
+.realised>span:nth-child(2) {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.realised>span:nth-child(3) {
+	color: #989ca4;
+}
+
+.movie-search {
+	position: relative;
+	border-bottom: 1px solid rgba(63, 68, 78, 0.2);
+	;
+
+	input {
+
+		width: 162px;
+		padding: 2px;
+
+		color: #9b9ea3;
+		font-family: "Arial MT";
+		font-size: 13px;
+		font-weight: 400;
+		font-style: italic;
+
+		background-color: transparent;
+		border: none;
+		outline: none;
+	}
+
+	input::placeholder {
+		color: #9b9ea3;
+		font-family: "Arial MT";
+		font-size: 13px;
+		font-weight: 400;
+		font-style: italic;
+	}
+
+}
+
+.movie-search::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	width: 15px;
+	height: 15px;
+	content: '';
+
+	background-image: url(../img/search_icon.svg);
+}

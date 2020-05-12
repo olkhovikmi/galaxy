@@ -21,7 +21,8 @@
 
 				<nav class="header-menu">
 					<a href="#" class="header-menu__link"><img src="img/01_1.svg" alt="комментарии"></a>
-					<a href="#" class="header-menu__link"><img src="img/01_2.svg" alt="видео"></a>
+					<a href="#" class="header-menu__link header-menu__link-active"><img src="img/01_2.svg" alt="видео"><span
+							class="menu-text">movies</span></a>
 					<a href="#" class="header-menu__link"><img src="img/01_3.svg" alt="плей"></a>
 					<a href="#" class="header-menu__link"><img src="img/01_4.svg" alt="джостик"></a>
 					<a href="#" class="header-menu__link"><img src="img/01_5.svg" alt="смотреть"></a>
@@ -59,24 +60,42 @@
 							<div class="update"><span><b>Updated</b>Feb 20, 2014</span></div>
 							<div class="rating"><span><b>Rating</b></span>
 								<div class="rating__group">
-									<input class="rating__star" type="radio" name="health" value="1" aria-label="Ужасно" checked>
-									<input class="rating__star" type="radio" name="health" value="2" aria-label="Сносно" checked>
-									<input class="rating__star" type="radio" name="health" value="3" aria-label="Нормально" checked>
-									<input class="rating__star" type="radio" name="health" value="4" aria-label="Хорошо" checked>
-									<input class="rating__star" type="radio" name="health" value="5" aria-label="Отлично">
+									<img src="img/star_off.svg" alt="Звезда" class="rating__star">
+									<img src="img/star_off.svg" alt="Звезда" class="rating__star">
+									<img src="img/star_off.svg" alt="Звезда" class="rating__star">
+									<img src="img/star_off.svg" alt="Звезда" class="rating__star">
+									<img src="img/star_on.svg" alt="Звезда" class="rating__star">
 								</div>
 							</div>
 						</section>
 
 						<section class="info-right">
-							<div class="like"><span class="like__text">2,548</span></div>
-							<div class="comments"><span class="comments__text">21</span></div>
-							<div class="download"><span class="download__text">564</span></div>
+							<span class="like">2,548</span>
+							<span class="comments">21</span>
+							<span class="download">564</span>
 						</section>
 					</div>
 
 				</div>
 
+			</div>
+		</div>
+
+		<div class="film-container">
+			<div class="wrap">
+				<div class="film-box">
+					<div class="film-header">
+						<h1 class="movie-title">FEATURED MOVIES</h1>
+						<div class="realised">
+							<span>New Realised</span>
+							<span>/</span>
+							<span>Trailers & Clips</span>
+						</div>
+						<div class="movie-search">
+							<input type="text" aria-label="поиск" placeholder="Search...">
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</main>

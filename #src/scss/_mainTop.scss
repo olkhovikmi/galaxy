@@ -164,47 +164,75 @@
 	}
 
 	&__group {
-		position: relative;
-		width: 70px;
-		height: 14px;
-		background-image: url('../img/star_on.svg');
-		background-size: 14px 14px;
-		background-repeat: repeat-x;
+		display: flex;
+		align-items: center;
 	}
 
-	&__star {
-		position: absolute;
-		top: 0;
-		left: 0;
-		margin: 0;
-		height: 14px;
-		appearance: none;
-		background-size: 14px 14px;
-		background-repeat: repeat-x;
+	&__star:not(:last-of-type) {
+		margin-right: 4px;
 	}
 
-	&__star:checked {
-		width: 55px;
-		background-image: url('../img/star_off.svg');
-	}
 }
 
 .info-right {
 	display: flex;
+	justify-content: flex-end;
+	align-items: center;
 
+	@include karla;
+	font-size: 14px;
 }
 
 .like {
+	position: relative;
+	margin-left: 18px;
+	padding-left: 12px;
+}
 
-	&__text {}
+.like::before {
+	position: absolute;
+	top: 2px;
+	left: -18px;
+	display: block;
+	width: 15px;
+	height: 13px;
+	content: '';
+
+	background-image: url(../img/02_1.svg);
 }
 
 .comments {
+	position: relative;
+	margin-left: 18px + 25px;
+	padding-left: 12px;
+}
 
-	&__text {}
+.comments::before {
+	position: absolute;
+	top: 2px;
+	left: -18px;
+	display: block;
+	width: 14px;
+	height: 14px;
+	content: '';
+
+	background-image: url(../img/02_2.svg);
 }
 
 .download {
+	position: relative;
+	margin-left: 18px + 25px;
+	padding-left: 12px;
+}
 
-	&__text {}
+.download::before {
+	position: absolute;
+	top: 2px;
+	left: -18px;
+	display: block;
+	width: 14px;
+	height: 14px;
+	content: '';
+
+	background-image: url(../img/02_3.svg);
 }

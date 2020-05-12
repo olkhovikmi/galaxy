@@ -112,6 +112,36 @@ img {
   background-image: url("../img/edit_profile.svg");
 }
 
+.header-menu__link-active {
+  position: relative;
+}
+
+.menu-text {
+  position: absolute;
+  bottom: -65px;
+  left: -21px;
+  padding: 10px;
+  font-family: "Karl";
+  font-weight: 700;
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+  background-color: #d8232a;
+  border-radius: 10px;
+  z-index: 20;
+}
+
+.menu-text::after {
+  position: absolute;
+  top: -6px;
+  left: 25px;
+  display: block;
+  content: '';
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid #d8232a;
+}
+
 .main-container {
   position: relative;
   min-height: 497px;
@@ -297,34 +327,191 @@ img {
 }
 
 .rating__group {
-  position: relative;
-  width: 70px;
-  height: 14px;
-  background-image: url("../img/star_on.svg");
-  background-size: 14px 14px;
-  background-repeat: repeat-x;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.rating__star {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  height: 14px;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background-size: 14px 14px;
-  background-repeat: repeat-x;
-}
-
-.rating__star:checked {
-  width: 55px;
-  background-image: url("../img/star_off.svg");
+.rating__star:not(:last-of-type) {
+  margin-right: 4px;
 }
 
 .info-right {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Karl";
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.like {
+  position: relative;
+  margin-left: 18px;
+  padding-left: 12px;
+}
+
+.like::before {
+  position: absolute;
+  top: 2px;
+  left: -18px;
+  display: block;
+  width: 15px;
+  height: 13px;
+  content: '';
+  background-image: url(../img/02_1.svg);
+}
+
+.comments {
+  position: relative;
+  margin-left: 43px;
+  padding-left: 12px;
+}
+
+.comments::before {
+  position: absolute;
+  top: 2px;
+  left: -18px;
+  display: block;
+  width: 14px;
+  height: 14px;
+  content: '';
+  background-image: url(../img/02_2.svg);
+}
+
+.download {
+  position: relative;
+  margin-left: 43px;
+  padding-left: 12px;
+}
+
+.download::before {
+  position: absolute;
+  top: 2px;
+  left: -18px;
+  display: block;
+  width: 14px;
+  height: 14px;
+  content: '';
+  background-image: url(../img/02_3.svg);
+}
+
+.film-container {
+  background-color: #edeff0;
+}
+
+.film-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 33px 0;
+}
+
+.movie-title {
+  font-family: "Karl";
+  font-weight: 700;
+  color: #3f444e;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+
+.realised {
+  font-family: "Karl";
+  font-weight: 400;
+  color: #3f444e;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.realised > span:nth-child(2) {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.realised > span:nth-child(3) {
+  color: #989ca4;
+}
+
+.movie-search {
+  position: relative;
+  border-bottom: 1px solid rgba(63, 68, 78, 0.2);
+}
+
+.movie-search input {
+  width: 162px;
+  padding: 2px;
+  color: #9b9ea3;
+  font-family: "Arial MT";
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.movie-search input::-webkit-input-placeholder {
+  color: #9b9ea3;
+  font-family: "Arial MT";
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.movie-search input::-moz-placeholder {
+  color: #9b9ea3;
+  font-family: "Arial MT";
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.movie-search input:-ms-input-placeholder {
+  color: #9b9ea3;
+  font-family: "Arial MT";
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.movie-search input::-ms-input-placeholder {
+  color: #9b9ea3;
+  font-family: "Arial MT";
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.movie-search input::placeholder {
+  color: #9b9ea3;
+  font-family: "Arial MT";
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.movie-search::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 15px;
+  height: 15px;
+  content: '';
+  background-image: url(../img/search_icon.svg);
 }

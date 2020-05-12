@@ -5,13 +5,13 @@
 $grey: #3f444e;
 
 @mixin karla {
-	font-family: "Karl";	
-	font-weight: 700;	
+	font-family: "Karl";
+	font-weight: 700;
 }
 
 @mixin karlareg {
-	font-family: "Karl";	
-	font-weight: 400;	
+	font-family: "Karl";
+	font-weight: 400;
 }
 
 * {
@@ -36,3 +36,4 @@ img {
 
 @import 'header';
 @import 'mainTop';
+@import 'mainBottom';
