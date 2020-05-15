@@ -10,7 +10,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 33px 0;
+	margin-bottom: 33px;
+	padding-top: 33px;
 }
 
 .movie-title {
@@ -78,3 +79,5 @@
 
 	background-image: url(../img/search_icon.svg);
 }
+
+

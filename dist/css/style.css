@@ -419,7 +419,8 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 33px 0;
+  margin-bottom: 33px;
+  padding-top: 33px;
 }
 
 .movie-title {
