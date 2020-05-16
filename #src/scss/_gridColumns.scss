@@ -1,0 +1,250 @@
+.grid-movie {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.column-left-container {
+	width: 439px/1135px*100%;
+	display: grid;
+	grid-template-areas:
+		'galaxy iron'
+		'captain iron'
+		'man man';
+	grid-gap: 20px;
+}
+
+.row-galaxy {
+	width: 207px;
+	position: relative;
+	grid-area: galaxy;
+
+	&__like {
+		position: relative;
+		margin-left: 15px;
+		padding-left: 12px;
+
+		font-size: 14px;
+	}
+
+	&__like::before {
+		position: absolute;
+		top: 2px;
+		left: -15px;
+		display: block;
+		width: 15px;
+		height: 13px;
+		content: '';
+
+		background-image: url(../img/02_1.svg);
+	}
+
+	&__like::after {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: block;
+		width: 14px;
+		height: 14px;
+		content: '';
+
+		background-image: url(../img/download.svg);
+	}
+
+	&__title {
+		font-size: 14px;
+	}
+}
+
+.inner-galaxy {
+	width: 207px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: absolute;
+	top: 0;
+	padding: 10px 12px 15px 17px;
+
+	@include karla;
+	color: #ffffff;
+}
+
+.row-captain {
+	width: 207px;
+	position: relative;
+	grid-area: captain;
+
+	&__like {
+		position: relative;
+		margin-left: 15px;
+		padding-left: 12px;
+
+		font-size: 14px;
+	}
+
+	&__like::before {
+		position: absolute;
+		top: 2px;
+		left: -15px;
+		display: block;
+		width: 15px;
+		height: 13px;
+		content: '';
+
+		background-image: url(../img/02_1.svg);
+	}
+
+	&__like::after {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: block;
+		width: 14px;
+		height: 14px;
+		content: '';
+
+		background-image: url(../img/download.svg);
+	}
+
+	&__title {
+		font-size: 14px;
+	}
+}
+
+.inner-captain {
+	width: 207px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: absolute;
+	top: 0;
+	padding: 10px 12px 15px 17px;
+
+	@include karla;
+	color: #ffffff;
+
+	background-color: rgba(63, 68, 78, 0.2);
+}
+
+.row-iron {
+	grid-area: iron;
+
+	&__like {
+		position: relative;
+		margin-left: 15px;
+		padding-left: 12px;
+		margin-bottom: 7px;
+	}
+
+	&__like::before {
+		position: absolute;
+		top: 2px;
+		left: -15px;
+		width: 15px;
+		height: 13px;
+		content: '';
+
+		background-image: url(../img/02_1.svg);
+	}
+
+	&__comment {
+		position: relative;
+		margin-left: 15px;
+		padding-left: 12px;
+		margin-bottom: 7px;
+	}
+
+	&__comment::before {
+		position: absolute;
+		top: 2px;
+		left: -15px;
+		width: 14px;
+		height: 14px;
+		content: '';
+
+		background-image: url(../img/02_2.svg);
+	}
+
+	&__download {
+		position: relative;
+		margin-left: 15px;
+		padding-left: 12px;
+		margin-bottom: 7px;
+	}
+
+	&__download::before {
+		position: absolute;
+		top: 2px;
+		left: -15px;
+		width: 14px;
+		height: 14px;
+		content: '';
+
+		background-image: url(../img/02_3.svg);
+	}
+
+	&__rating {
+		display: flex;
+		margin-bottom: 7px;
+
+		b {
+			margin-right: 9px;
+		}
+	}
+
+	&__date {
+		font-weight: 400;
+
+		b {
+			margin-right: 6px;
+
+			font-weight: 700;
+		}
+	}
+
+	&__img {
+		position: relative;
+	}
+
+	&__img-title {
+		position: absolute;
+		bottom: 24px;
+		left: 20px;
+
+
+		@include karla;
+		color: #ffffff;
+		font-size: 14px;
+	}
+
+	.box-iron {
+		width: 207px;
+
+		background-color: #ffffff;
+
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+
+	.inner-iron {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 10px 10px 20px 18px;
+
+		@include karla;
+		color: $grey;
+		font-size: 14px;
+	}
+
+	.rating {
+
+		&__star {}
+	}
+}
+
+.row-man {
+	grid-area: man;
+
+}
