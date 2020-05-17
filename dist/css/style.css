@@ -521,9 +521,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .column-left-container {
@@ -531,6 +531,7 @@ body {
   display: grid;
   grid-template-areas: 'galaxy iron' 'captain iron' 'man man';
   grid-gap: 20px;
+  margin-right: 25px;
 }
 
 .row-galaxy {
@@ -770,4 +771,38 @@ body {
 
 .row-man {
   grid-area: man;
+}
+
+.column-right-container {
+  display: grid;
+  grid-template-areas: 'america spider halk' 'tor tor wolf' 'com spider2 wolf';
+  grid-gap: 20px;
+}
+
+.america {
+  grid-area: america;
+}
+
+.spider {
+  grid-area: spider;
+}
+
+.halk {
+  grid-area: halk;
+}
+
+.tor {
+  grid-area: tor;
+}
+
+.wolf {
+  grid-area: wolf;
+}
+
+.com {
+  grid-area: com;
+}
+
+.spider2 {
+  grid-area: spider2;
 }
