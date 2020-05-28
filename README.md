@@ -1,2 +1,2 @@
 # galaxy
-html,css,scss,js,bam,gulp
+html,css,scss,js,bem,gulp
